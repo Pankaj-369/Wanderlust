@@ -1,0 +1,157 @@
+body {
+    font-family: Plus Jakarta Sans, sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+.navbar {
+  height: 5rem;
+  padding: 0 2rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: white !important;
+}
+
+.navbar a {
+  transition: all 0.25s ease-in-out;
+}
+.navbar-brand {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #fe424d !important;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+.navbar-brand:hover {
+  opacity: 0.85;
+}
+
+
+.navbar-nav .nav-link {
+  font-size: 0.95rem;
+  color: #222 !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #fe424d !important;
+  opacity: 0.85;
+}
+
+
+
+
+.fa-compass {
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link {
+    color: #000000 !important;
+}
+
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+.f-info-socials,
+.f-info-links,
+.f-info-brand {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-socials i {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.f-info {
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+.listing-card {
+    border: none !important;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.listing-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transform: scale(1.015);
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+.card-text p {
+    font-weight: 400;
+}
+
+.card-img-overlay {
+    opacity: 0;
+    transition: transform 0.4s ease;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.1;
+    background-color: white;
+    transform: scale(1.05);
+}
+
+.add-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.edit-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.delete-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.show-img {
+    height: 55vh;
+
+}
+
+.btns {
+    display: flex;
+}
+
+.show-card {
+    padding-left: 0;
+    padding-right: 0;
+}
