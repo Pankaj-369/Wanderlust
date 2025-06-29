@@ -52,11 +52,13 @@ body {
     margin-bottom: 1rem;
   }
 }
+@media (max-width: 576px) {
 .card {
   width: 75% !important;
   max-width: 600px !important; /* Optional cap for large screens */
   margin: 0 auto !important;   /* Center on larger screens */
   padding: 0 1rem !important;  /* Padding on small screens */
+}
 }
 
 @media (max-width: 576px) {

@@ -37,7 +37,7 @@ app.use(express.urlencoded({extended:true}));
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 app.use(express.json());
-const port = process.env.PORT || 4000 
+const port = process.env.PORT || 3000 
 
 const store=MongoStore.create({
     mongoUrl:dbUrl,

@@ -9,12 +9,12 @@ main().then(()=>{
 });
 
 async function main(){
-    await mongoose.connect('mongodb://127.0.0.1:27017/Wanderlust')
+    await mongoose.connect('mongodb+srv://Pankaj:Pankaj@cluster0.kfuh7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 }
 
 const initDB=async()=>{
     await Listing.deleteMany({});
-    initData.data= initData.data.map((obj)=>({...obj,owner:"6857cad6a998559b1af7f4a2"}));
+    initData.data= initData.data.map((obj)=>({...obj,owner:"68601dfdba4fe5b11bc8961e"}));
     await Listing.insertMany(initData.data);
     console.log("Successfully reinitialized");
 }
