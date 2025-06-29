@@ -81,7 +81,12 @@ module.exports.createListing=async(req,res)=>{
     let query=req.body.listing.location;
 let lon;
 let lat;
- const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`);
+ const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}`, {
+  headers: {
+    'User-Agent': 'wanderlust-app/1.0 (pankaj.kandpal24@gmail.com)',
+  }
+});
+
 const data = await response.json();
 
 if (data.length > 0) {
