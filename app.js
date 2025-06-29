@@ -37,7 +37,7 @@ app.use(express.urlencoded({extended:true}));
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 app.use(express.json());
-
+const port = process.env.PORT || 4000 
 
 const store=MongoStore.create({
     mongoUrl:dbUrl,
@@ -114,7 +114,7 @@ app.use((err,req,res,next)=>{
 
 
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log('Server is running on port 3000');
 })
 
