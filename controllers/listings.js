@@ -11,7 +11,7 @@ module.exports.index=async (req, res) => {
      allListings = await Listing.find({category});
   }
   else{
-     allListings= await Listing.find({})
+     allListings= await Listing.find({});
   }
 
   if(searchitem){
@@ -45,7 +45,12 @@ module.exports.showListing=async(req,res)=>{
 
       if (listing.geometry.coordinates[0]===0 && listing.geometry.coordinates[1]===0) {
     try {
-      const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(listing.location)}`);
+      const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(listing.location)}`, {
+  headers: {
+    'User-Agent': 'wanderlust-app/1.0 (pankaj.kandpal24@gmail.com)',
+     "Accept": "application/json"
+  }
+});
       const data = await geoRes.json();
  
       if (data.length > 0) {
