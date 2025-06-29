@@ -43,7 +43,30 @@ body {
   opacity: 0.85;
 }
 
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    position: relative !important;
+    background-color: white;
+    z-index: 1;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+.card {
+  width: 75% !important;
+  max-width: 600px !important; /* Optional cap for large screens */
+  margin: 0 auto !important;   /* Center on larger screens */
+  padding: 0 1rem !important;  /* Padding on small screens */
+}
 
+@media (max-width: 576px) {
+  #map {
+    width: 100% !important;
+    margin: 0 auto !important;
+    margin-top: 1rem !important;
+    padding: 0 0.75rem !important; /* Some breathing room */
+  }
+}
 
 
 .fa-compass {
