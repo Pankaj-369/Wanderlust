@@ -61,12 +61,17 @@ body {
 }
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
 @media (max-width: 576px) {
   #map {
     width: 100% !important;
-    margin: 0 auto !important;
-    margin-top: 1rem !important;
-    padding: 0 0.75rem !important; /* Some breathing room */
+    height: 40vh;
+    padding: 0 1rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
