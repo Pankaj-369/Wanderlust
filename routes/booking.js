@@ -71,22 +71,22 @@ router.delete("/bookings/:id", isLoggedIn, async (req, res) => {
     const booking = await Booking.findById(req.params.id);
     if (!booking) {
       req.flash("error", "Booking not found");
-      return res.redirect("my/bookings");
+      return res.redirect("/my/bookings");
     }
 
     // Allow only the user who created the booking to cancel
     if (!booking.user.equals(req.user._id)) {
       req.flash("error", "Unauthorized");
-      return res.redirect("my/bookings");
+      return res.redirect("/my/bookings");
     }
 
     await Booking.findByIdAndDelete(req.params.id);
     req.flash("success", "Booking cancelled successfully");
-    res.redirect("my/bookings");
+    res.redirect("/my/bookings");
   } catch (err) {
     console.error(err);
     req.flash("error", "Something went wrong while cancelling");
-    res.redirect("my/bookings");
+    res.redirect("/my/bookings");
   }
 });
 
