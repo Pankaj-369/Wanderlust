@@ -43,7 +43,7 @@ router.post("/bookings", isLoggedIn, preventOwnerBooking, async (req, res) => {
   }
 
   try {
-    await Booking.save({
+    await Booking.create({
       user: userId,
       listing: listingId,
       checkIn: new Date(checkIn),
