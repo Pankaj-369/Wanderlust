@@ -1,0 +1,74 @@
+
+<% layout("/layouts/boilerplatehost.ejs") %>
+
+
+<style>
+  .listing-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .listing-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .listing-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-img-top {
+    height: 16rem;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .card-body {
+    padding: 1rem 1.2rem;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  .card-price {
+    color: #222;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .tax-info {
+    font-size: 0.85rem;
+    color: #888;
+    margin-left: 0.3rem;
+  }
+</style>
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4 fw-bold">My Listings</h2>
+
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+    <% for (let listing of Listings) { %>
+      <div class="col">
+        <a href="/hosting/mylistings/<%=listing._id %>" class="listing-link">
+          <div class="card listing-card h-100">
+            <img src="<%= listing.image.url %>" class="card-img-top" alt="listing image">
+            <div class="card-body">
+              <div class="card-title"><%= listing.title %></div>
+              <div class="card-price">
+                ₹ <%= listing.price.toLocaleString("en-IN") %> / night
+                <span class="tax-info">+18% GST</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% } %>
+  </div>
+</div>

@@ -15,6 +15,8 @@ const MongoStore= require("connect-mongo");
 const listingsRouter= require("./routes/listing.js");
 const reviewsRouter= require("./routes/review.js");
 const userRouter= require("./routes/user.js");
+const bookingRoutes= require("./routes/booking.js");
+const hostingRoutes= require("./routes/hosting.js");
 
 const flash=require("connect-flash");  // to flash message on time 
 const passport=require("passport");
@@ -78,6 +80,8 @@ app.use((req,res,next)=>{
     res.locals.success=req.flash("success");
     res.locals.error=req.flash("error");
     res.locals.currUser=req.user;
+  res.locals.showHostNavbar = false; 
+
     next();
 });
 
@@ -95,6 +99,8 @@ app.use((req,res,next)=>{
 app.use("/listings",listingsRouter);
 app.use("/listings/:id/reviews",reviewsRouter);
 app.use("/",userRouter);
+app.use("/",bookingRoutes);
+app.use("/hosting",hostingRoutes);
 
 app.get('/', (req, res) => {
   res.redirect('/listings');

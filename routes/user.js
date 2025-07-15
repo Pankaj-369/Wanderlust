@@ -21,6 +21,8 @@ router.route("/login")
     failureFlash:true,
 }),userController.login)
 
+
+
 router.get("/logout",userController.logout)
 
 module.exports =router;

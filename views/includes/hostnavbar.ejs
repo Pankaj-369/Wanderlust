@@ -1,0 +1,69 @@
+<style>
+  .navbar-custom {
+    padding: 0.8rem 2rem;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .navbar-brand i {
+    font-size: 1.7rem;
+    color: #fe424d;
+  }
+
+  .nav-link {
+    font-weight: 500;
+    color: #333;
+    margin-left: 1rem;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: #fe424d;
+  }
+
+  .btn-switch {
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 0.3rem 1rem;
+    margin-left: 1rem;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+
+  .btn-switch:hover {
+    border-color: #fe424d;
+    color: #fe424d;
+  }
+</style>
+
+<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top navbar-custom">
+  <div class="container-fluid">
+    <!-- Left: Logo -->
+    <a class="navbar-brand" href="/hosting"><i class="fa-regular fa-compass"></i></a>
+
+    <!-- Toggle Button for mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#hostNavbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Right: Host Links -->
+    <div class="collapse navbar-collapse justify-content-end" id="hostNavbarContent">
+      <div class="navbar-nav d-flex align-items-center">
+
+        <a class="nav-link" href="/listings/new">Add Listing</a>
+        <a class="nav-link" href="/hosting/mylistings">My Listings</a>
+        <a class="nav-link" href="/hosting">Bookings</a>
+
+        <a class="btn btn-switch" href="/listings">Switch to Guest</a>
+
+        <% if (!currUser) { %>
+          <a class="nav-link" href="/signup"><b>Sign up</b></a>
+          <a class="nav-link" href="/login"><b>Log in</b></a>
+        <% } else { %>
+          <a class="nav-link" href="/logout">Log out</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,64 +1,117 @@
 <style>
+  .navbar-custom {
+    padding: 0.8rem 2rem;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
 
-.search-btn{
-  background-color: #fe424d;
-  color: #fff;
-  border-radius: 25px;
-  padding:0 1rem 0 1rem;
-  transition: all 0.3s ease;
-}
-.search-btn:hover{
-  background-color: #fe424d;
-  color: #fff;
-  transform: scale(1.1);
+  .navbar-brand i {
+    font-size: 1.7rem;
+    color: #fe424d;
+  }
 
-}
-.search-btn i{
-  display: inline;
-  margin-right: 0.5rem;
-}
-.search-inp{
-  border-radius: 25px; 
-  padding: 0.5rem 2rem 0.5rem 2rem; 
-  transition: box-shadow 0.3s ease, border 0.3s ease;
-  border: 1px solid #ddd;
-  outline: none;
-}
-.search-inp:focus {
-  border-color: #fe424d;
-  box-shadow: 0 0 8px rgba(254, 66, 77, 0.4);
-}
+  .search-form {
+    flex: 1;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .search-inp {
+    border-radius: 25px;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: box-shadow 0.3s ease, border 0.3s ease;
+  }
+
+  .search-inp:focus {
+    border-color: #fe424d;
+    box-shadow: 0 0 6px rgba(254, 66, 77, 0.4);
+  }
+
+  .search-btn {
+    background-color: #fe424d;
+    color: #fff;
+    border-radius: 25px;
+    padding: 0.5rem 1.2rem;
+    margin-left: 0.5rem;
+    border: none;
+    transition: all 0.3s ease;
+  }
+
+  .search-btn:hover {
+    transform: scale(1.05);
+    background-color: #e53945;
+  }
+
+  .nav-link {
+    font-weight: 500;
+    color: #333;
+    margin-left: 1rem;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: #fe424d;
+  }
+
+  .btn-host {
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 0.3rem 1rem;
+    margin-left: 1rem;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+
+  .btn-host:hover {
+    border-color: #fe424d;
+    color: #fe424d;
+  }
 </style>
 
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top navbar-custom">
   <div class="container-fluid">
+    <!-- Left: Logo -->
     <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+     <a class="nav-link" href="/listings">Explore</a>
+
+    <!-- Toggle Button for mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" href="/listings">Explore</a>
-      </div>
 
-      <div class="navbar-nav ms-auto">
-          <form class="d-flex" method="get" action="/listings" role="search">
-      <input class="form-control me-2 search-inp" type="search" name="q" placeholder="Search destination"/>
-      <button class="btn search-btn" type="submit">
-        <i class="fa-solid fa-magnifying-glass"></i>Search</button>
-    </form>
-      </div>
+    <!-- Center: Search -->
+    <div class="collapse navbar-collapse justify-content-between" id="navbarContent">
+      <form class="d-flex search-form" method="get" action="/listings">
+        <input class="form-control search-inp" name="q" type="search" placeholder="Search destination" />
+        <button class="search-btn" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
 
-      <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new">Add new Listing</a>
-        <% if(!currUser) {%>
-        <a class="nav-link" href="/signup"><b>Sign up</b></a>
-        <a class="nav-link" href="/login"><b>Log in</b></a>
+      <!-- Right: Links -->
+      <div class="navbar-nav d-flex align-items-center">
+       
+
+        <% if (currUser) { %>
+          <a class="nav-link" href="/my/bookings">My Bookings</a>
         <% } %>
-        <% if(currUser) {%>
-        <a class="nav-link" href="/logout">Log out</a>
+
+        <% if (!currUser?.isHost) { %>
+          <a href="/hosting/hostform" class="btn btn-host">Become a Host</a>
+        <% } else { %>
+          <a href="/hosting" class="btn btn-host">Switch to Hosting</a>
+        <% } %>
+
+        <% if (!currUser) { %>
+          <a class="nav-link" href="/signup"><b>Sign up</b></a>
+          <a class="nav-link" href="/login"><b>Log in</b></a>
+        <% } else { %>
+          <a class="nav-link" href="/logout">Log out</a>
         <% } %>
       </div>
     </div>
-  </div>  
+  </div>
 </nav>

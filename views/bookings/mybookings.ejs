@@ -1,0 +1,101 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<style>
+  .booking-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .booking-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .booking-card img {
+    height: 250px;
+    object-fit: cover;
+  }
+
+  .booking-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .booking-location {
+    font-size: 0.9rem;
+    color: #6c757d;
+  }
+
+  .booking-price {
+    color: #333;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .booking-buttons .btn {
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+  }
+</style>
+
+<div class="container my-5">
+  <h2 class="text-center mb-4 fw-bold">My Bookings</h2>
+
+  <% if (success && success.length > 0) { %>
+    <div class="alert alert-success text-center"><%= success %></div>
+  <% } %>
+
+  <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger text-center"><%= error %></div>
+  <% } %>
+
+  <% if (bookings.length === 0) { %>
+    <div class="alert alert-info text-center">
+      You haven’t booked any stays yet. Explore listings and plan your trip!
+    </div>
+  <% } else { %>
+    <div class="row justify-content-center">
+      <% bookings.forEach((booking) => { %>
+        <div class="col-md-6 col-lg-5 mb-4">
+          <div class="card p-3 booking-card shadow-sm">
+            <img 
+              src="<%= booking.listing.image.url %>" 
+              class="card-img-top" 
+              alt="Listing image"
+            >
+            <div class="card-body">
+              <h5 class="booking-title"><%= booking.listing.title %></h5>
+              <p class="booking-location mb-2">
+                <i class="bi bi-geo-alt-fill me-1"></i><%= booking.listing.location %>, <%= booking.listing.country %>
+              </p>
+
+              <p class="mb-1"><strong>Guests:</strong> <%= booking.guests %></p>
+              <p class="mb-1">
+                <strong>Check-in:</strong> <%= booking.checkIn.toDateString() %><br>
+                <strong>Check-out:</strong> <%= booking.checkOut.toDateString() %>
+              </p>
+
+              <p class="booking-price mt-3">
+                ₹ <%= booking.totalPrice.toLocaleString("en-IN") %>
+              </p>
+
+              <div class="booking-buttons">
+                <a href="/listings/<%= booking.listing._id %>" class="btn btn-outline-dark btn-sm">
+                  View Listing
+                </a>
+
+                <form method="POST" action="/bookings/<%= booking._id %>?_method=DELETE" class="d-inline">
+                  <button class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure you want to cancel this booking?')">
+                    Cancel Booking
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>

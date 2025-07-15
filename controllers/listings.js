@@ -29,7 +29,7 @@ module.exports.searchListings=async (req, res) => {
 }
 
 module.exports.renderNewForm=async (req, res) => {
-    res.render('listings/new.ejs');
+    res.render('hosting/new.ejs');
 }
 
 module.exports.showListing=async(req,res)=>{
@@ -52,7 +52,7 @@ module.exports.showListing=async(req,res)=>{
   }
 });
       const data = await geoRes.json();
- 
+
       if (data.length > 0) {
         const lat = parseFloat(data[0].lat);
         const lng = parseFloat(data[0].lon);
@@ -76,7 +76,7 @@ module.exports.showListing=async(req,res)=>{
         req.flash("error","Listing you requested for does not exist!");
         res.redirect("/listings");
     }
-    res.render('listings/show.ejs', { listing:listing });
+    res.render('listings/show.ejs', { listing:listing ,isHostRoute:false});
 }
 
 module.exports.createListing=async(req,res)=>{
