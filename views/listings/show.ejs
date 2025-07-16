@@ -29,6 +29,7 @@
 
   <div class="row mb-4">
     <div class="d-flex justify-content-center">
+      <% if(isHostRoute) {%>
       <% if (currUser) { %>
         <a href="/bookings/<%= listing._id %>" class="btn btn-lg btn-primary px-5 py-2 shadow-sm">
           <i class="fa fa-calendar-check me-2"></i>Book This Stay
@@ -37,6 +38,7 @@
         <a href="/login" class="btn btn-lg btn-outline-primary px-5 py-2 shadow-sm">
           <i class="fa fa-sign-in-alt me-2"></i>Log in to Book
         </a>
+      <% } %>
       <% } %>
     </div>
   </div>
